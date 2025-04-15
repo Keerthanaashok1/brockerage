@@ -1,6 +1,6 @@
 # Brokerage Project
 
-This is a Python-based brokerage system.
+This is a Python-based brokerage calculation system that supports different types of trades including futures, options, delivery equity, and intraday equity.
 
 ## Setup Instructions
 
@@ -32,14 +32,49 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Running the Application
+## Running the Application
+
+The system is divided into different modules for various types of trades. Choose the appropriate script based on your needs:
+
+### For Futures Trading
 ```bash
-python brockerage.py
+python brockerage_ffutures.py
 ```
+This script calculates brokerage for futures trading.
+
+### For Options Trading
+```bash
+python brockerage_foptions.py
+```
+This script handles options trading brokerage calculations.
+
+### For Delivery Equity
+```bash
+python brockerage_del_equity.py
+```
+Use this script for delivery-based equity trading calculations.
+
+### For Intraday Equity
+```bash
+python brockerage_intra_equity.py
+```
+This script is specifically for intraday equity trading calculations.
+
+## Input Files
+- `Brokerage_calculator1_Input.xlsx`: Main input file containing trade details
+- `NIFTY_parameter.xlsx`: Contains NIFTY-related parameters
+
+## Output
+The calculated results will be saved in the `OUTPUT` directory with appropriate timestamps.
 
 ## Project Structure
 ```
 brockerage/
-├── brockerage.py    # Main application file
-├── requirements.txt  # Python dependencies
-└── doc/             # Documentation files
+├── brockerage_ffutures.py    # Futures trading calculations
+├── brockerage_foptions.py    # Options trading calculations
+├── brockerage_del_equity.py  # Delivery equity calculations
+├── brockerage_intra_equity.py# Intraday equity calculations
+├── requirements.txt          # Python dependencies
+├── INPUT/                    # Input files directory
+├── OUTPUT/                   # Generated reports directory
+└── doc/                      # Documentation files
