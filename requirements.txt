@@ -8,3 +8,4 @@ termcolor>=1.1.0
 rich>=10.0.0
 prompt-toolkit>=3.0.0
 selenium>=4.1.0
+openpyxl>=3.0.0  # For Excel file handling

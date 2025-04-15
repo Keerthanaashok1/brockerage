@@ -262,7 +262,7 @@ def process_excel_file(input_file, progress_bar, progress_label, root_window):
 
 def find_input_file():
     """Find input files with naming pattern ending with _input.xl* (.xlsx, .xls, etc.) in the current directory"""
-    current_dir = os.path.dirname(os.path.abspath(_file_))
+    current_dir = os.path.dirname(os.path.abspath(__file__))
     print(f"Looking for input files in: {current_dir}")
 
     input_files = []
@@ -341,7 +341,7 @@ def open_file_dialog():
     return selected_file[0]  # Return only the selected file path
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     file_path = open_file_dialog()
     if file_path:
         print(f"Selected file: {file_path}")
