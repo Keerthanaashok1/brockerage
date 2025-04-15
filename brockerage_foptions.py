@@ -123,8 +123,11 @@ def calculate_brokerage(lot_size, total_lot_size, buy_value, sell_value):
         return result
 
     except Exception as e:
-        print(f"Error in calculate_brokerage: {str(e)}")
-        return {}
+        import traceback
+        error_line = traceback.extract_tb(e.__traceback__)[-1].lineno
+        print(f"Error in calculate_brokerage at line {error_line}: {str(e)}")
+        print("Full stack trace:")
+        print(traceback.format_exc())
 
     finally:
         if driver:
@@ -237,7 +240,8 @@ def process_excel_file(input_file, progress_bar, progress_label, root_window):
         results_df = pd.DataFrame(brokerage_data)
 
         # Generate output filename with timestamp
-        timestamp = datetime.now().strftime('%Y%m%d')
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+
         # Check if OUTPUT directory exists, create it if it doesn't
         output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "OUTPUT")
         if not os.path.exists(output_dir):
@@ -245,7 +249,7 @@ def process_excel_file(input_file, progress_bar, progress_label, root_window):
             print(f"Created output directory: {output_dir}")
         
         # Generate output filename with timestamp in the OUTPUT directory
-        output_file = os.path.join(output_dir, f'{symbol}SUMMARY_REPORT{timestamp}.xlsx')
+        output_file = os.path.join(output_dir, f'{symbol}SUMMARY_REPORT{timestamp}_FOptions.xlsx')
 
         
 
